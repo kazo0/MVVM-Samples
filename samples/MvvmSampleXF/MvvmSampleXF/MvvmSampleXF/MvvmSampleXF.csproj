@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\docs\AsyncRelayCommand.md" />
+    <None Remove="Assets\docs\Introduction.md" />
+    <None Remove="Assets\docs\Ioc.md" />
+    <None Remove="Assets\docs\Messenger.md" />
+    <None Remove="Assets\docs\ObservableObject.md" />
+    <None Remove="Assets\docs\ObservableRecipient.md" />
+    <None Remove="Assets\docs\PuttingThingsTogether.md" />
+    <None Remove="Assets\docs\RelayCommand.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\docs\AsyncRelayCommand.md" />
+    <EmbeddedResource Include="Assets\docs\Introduction.md" />
+    <EmbeddedResource Include="Assets\docs\Ioc.md" />
+    <EmbeddedResource Include="Assets\docs\Messenger.md" />
+    <EmbeddedResource Include="Assets\docs\ObservableObject.md" />
+    <EmbeddedResource Include="Assets\docs\ObservableRecipient.md" />
+    <EmbeddedResource Include="Assets\docs\PuttingThingsTogether.md" />
+    <EmbeddedResource Include="Assets\docs\RelayCommand.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xam.Forms.MarkdownView" Version="0.6.1-pre" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0-pre5" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\MvvmSample.Core\MvvmSample.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\InteractiveSample.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RelayCommandPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

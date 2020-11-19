@@ -52,6 +52,7 @@
 &lt;/Page>
                 </controls:InteractiveSample.XamlCode>
                 <controls:InteractiveSample.CSharpCode>
+					
 public class MyViewModel : ObservableObject
 {
     public MyViewModel()
@@ -80,6 +81,7 @@ public class MyViewModel : ObservableObject
     /// &lt;/summary>
     private void IncrementCounter() => Counter++;
 }
+					
                 </controls:InteractiveSample.CSharpCode>
             </controls:InteractiveSample>
         </StackPanel>
