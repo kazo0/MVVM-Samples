@@ -5,7 +5,8 @@
 			 xmlns:vm="clr-namespace:MvvmSampleUwp.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
 			 x:Class="MvvmSampleXF.Views.RelayCommandPage"
-			 x:DataType="vm:RelayCommandPageViewModel">
+			 x:DataType="vm:RelayCommandPageViewModel"
+			 Title="Commands">
 	<ContentPage.BindingContext>
 		<vm:RelayCommandPageViewModel x:Name="ViewModel" />
 	</ContentPage.BindingContext>

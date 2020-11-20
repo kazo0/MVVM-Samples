@@ -4,7 +4,8 @@
 			 xmlns:vm="clr-namespace:MvvmSampleUwp.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 x:Class="MvvmSampleXF.Views.IntroductionPage"
-			 x:DataType="vm:ObservableObjectPageViewModel">
+			 x:DataType="vm:ObservableObjectPageViewModel"
+			 Title="Introduction">
 	<ContentPage.BindingContext>
 		<vm:ObservableObjectPageViewModel x:Name="ViewModel" />
 	</ContentPage.BindingContext>

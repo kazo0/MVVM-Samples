@@ -4,7 +4,8 @@
 			 xmlns:vm="clr-namespace:MvvmSampleUwp.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
-			 x:Class="MvvmSampleXF.Views.MessengerRequestPage">
+			 x:Class="MvvmSampleXF.Views.MessengerRequestPage"
+			 Title="Messenger">
 	<ContentPage.BindingContext>
 		<vm:MessengerPageViewModel x:Name="ViewModel" />
 	</ContentPage.BindingContext>

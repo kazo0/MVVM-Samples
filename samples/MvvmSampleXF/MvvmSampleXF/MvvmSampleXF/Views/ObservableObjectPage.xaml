@@ -5,7 +5,8 @@
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
 			 x:Class="MvvmSampleXF.Views.ObservableObjectPage"
-			 x:DataType="vm:ObservableObjectPageViewModel">
+			 x:DataType="vm:ObservableObjectPageViewModel"
+			 Title="ObservableObject">
 	<ContentPage.BindingContext>
 		<vm:ObservableObjectPageViewModel x:Name="ViewModel" />
 	</ContentPage.BindingContext>

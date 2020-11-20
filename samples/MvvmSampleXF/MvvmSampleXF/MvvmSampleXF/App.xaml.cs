@@ -26,7 +26,7 @@ namespace MvvmSampleXF
 				services.AddSingleton<ISettingsService, SettingsService>();
 				services.AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"));
 			});
-			MainPage = new AsyncRelayCommandPage();
+			MainPage = new AppShell();
 		}
 
 		protected override void OnStart()

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-             x:Class="MvvmSampleXF.App">
-    <Application.Resources>
+			 x:Class="MvvmSampleXF.App">
+	<Application.Resources>
 		<Color x:Key="PrimaryColor">#1976D2</Color>
 		<Color x:Key="FrameBackgroundColorDark">#1AFFFFFF</Color>
 		<Color x:Key="BackgroundColorDark">#121212</Color>
@@ -41,13 +41,55 @@
 					Value="{StaticResource PrimaryColor}" />
 		</Style>
 
+		<Style TargetType="TabBar"
+			   BasedOn="{StaticResource BaseStyle}" />
+		<Style TargetType="FlyoutItem"
+			   BasedOn="{StaticResource BaseStyle}" />
+
 		<Style BasedOn="{StaticResource BaseStyle}"
 			   ApplyToDerivedTypes="True"
 			   TargetType="Tab" />
 
+		<Style TargetType="Shell"
+			   ApplyToDerivedTypes="True">
+			<Setter Property="FlyoutBackgroundColor"
+					Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+		</Style>
+
+
+		<Style TargetType="Label"
+			   Class="FlyoutItemLabelStyle">
+			<Setter Property="TextColor"
+					Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
+		</Style>
+
+		<Style TargetType="Layout"
+			   Class="FlyoutItemLayoutStyle"
+			   ApplyToDerivedTypes="True">
+			<Setter Property="BackgroundColor"
+					Value="{AppThemeBinding Dark={StaticResource FrameBackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+			<Setter Property="VisualStateManager.VisualStateGroups">
+				<VisualStateGroupList>
+					<VisualStateGroup x:Name="CommonStates">
+						<VisualState x:Name="Normal" />
+						<VisualState x:Name="Selected">
+							<VisualState.Setters>
+								<Setter Property="BackgroundColor"
+										Value="{StaticResource PrimaryColor}" />
+							</VisualState.Setters>
+						</VisualState>
+					</VisualStateGroup>
+				</VisualStateGroupList>
+			</Setter>
+		</Style>
+
+		<Style BasedOn="{StaticResource BaseStyle}"
+			   ApplyToDerivedTypes="True"
+			   TargetType="FlyoutPage" />
+
 		<Style TargetType="md:MarkdownView">
 			<Setter Property="Theme"
-					Value="{AppThemeBinding Dark={StaticResource DarkMarkdownTheme}, Light={StaticResource LightMarkdownTheme}}"/>
+					Value="{AppThemeBinding Dark={StaticResource DarkMarkdownTheme}, Light={StaticResource LightMarkdownTheme}}" />
 		</Style>
 
 		<Style TargetType="Page"
@@ -67,6 +109,66 @@
 			<Setter Property="BackgroundColor"
 					Value="{AppThemeBinding Dark={StaticResource FrameBackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
 		</Style>
+
+		<OnPlatform x:Key="FaSolidFont"
+					x:TypeArguments="x:String">
+			<On Platform="iOS"
+				Value="FontAwesome5Free-Solid" />
+			<On Platform="Android"
+				Value="FontAwesomeSolid.otf#Regular" />
+		</OnPlatform>
+
+		<OnPlatform x:Key="FaRegularFont"
+					x:TypeArguments="x:String">
+			<On Platform="iOS"
+				Value="FontAwesome5Free-Regular" />
+			<On Platform="Android"
+				Value="FontAwesomeRegular.otf#Regular" />
+		</OnPlatform>
+
+		<OnPlatform x:Key="FaBrandsFont"
+					x:TypeArguments="x:String">
+			<On Platform="iOS"
+				Value="FontAwesome5Brands-Regular" />
+			<On Platform="Android"
+				Value="FontAwesomeBrands.otf#Regular" />
+		</OnPlatform>
+
+		<FontImage x:Key="PlayIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf04b;"/>
+
+		<FontImage x:Key="ExchangeIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf362;" />
+
+		<FontImage x:Key="CalendarIcon"
+				   FontFamily="{StaticResource FaRegularFont}"
+				   Glyph="&#xf073;" />
+
+		<FontImage x:Key="BookIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf02d;" />
+
+		<FontImage x:Key="FlagIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf024;" />
+		
+		<FontImage x:Key="CommentIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf4ad;" />
+
+		<FontImage x:Key="SendIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf1d8;" />
+
+		<FontImage x:Key="SortIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf338;" />
+
+		<FontImage x:Key="UndoIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf0e2;" />
 
 		<xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
 		<xct:IsNotNullOrEmptyConverter  x:Key="IsNotNullOrEmptyConverter" />

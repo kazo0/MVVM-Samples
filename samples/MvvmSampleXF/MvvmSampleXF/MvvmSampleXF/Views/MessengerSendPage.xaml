@@ -5,7 +5,8 @@
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
 			 x:Class="MvvmSampleXF.Views.MessengerSendPage"
-			 x:DataType="vm:MessengerPageViewModel">
+			 x:DataType="vm:MessengerPageViewModel"
+			 Title="Messenger">
 	<ContentPage.BindingContext>
 		<vm:MessengerPageViewModel x:Name="ViewModel" />
 	</ContentPage.BindingContext>
