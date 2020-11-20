@@ -2,12 +2,24 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Microsoft.Toolkit.Mvvm.Input;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MvvmSampleUwp.ViewModels
 {
     public class ObservableObjectPageViewModel : SamplePageViewModel
     {
+		public ObservableObjectPageViewModel()
+		{
+            ReloadTaskCommand = new RelayCommand(ReloadTask);
+		}
+
+        /// <summary>
+        /// Gets the <see cref="ICommand"/> responsible for setting <see cref="MyTask"/>.
+        /// </summary>
+        public ICommand ReloadTaskCommand { get; }
+
         private string name;
 
         /// <summary>

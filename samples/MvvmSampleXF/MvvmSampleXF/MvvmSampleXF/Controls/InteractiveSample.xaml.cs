@@ -29,6 +29,6 @@ namespace MvvmSampleXF.Controls
         public InteractiveSample()
 		{
 			InitializeComponent();
-		}
+        }
 	}
 }

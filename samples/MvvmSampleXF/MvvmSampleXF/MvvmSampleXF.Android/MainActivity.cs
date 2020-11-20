@@ -14,6 +14,9 @@ namespace MvvmSampleXF.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //global::Xamarin.Forms.Forms.SetFlags("Brush_Experimental");
+            //global::Xamarin.Forms.Forms.SetFlags("Shapes_Experimental");
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

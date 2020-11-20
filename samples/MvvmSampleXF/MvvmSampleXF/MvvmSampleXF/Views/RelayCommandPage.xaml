@@ -15,10 +15,7 @@
 			<md:MarkdownView Markdown="{Binding Path=Texts[How they work], Mode=OneWay}" />
 			<md:MarkdownView Markdown="{Binding Path=Texts[Working with `ICommand`], Mode=OneWay}" />
 
-			<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
-										HorizontalOptions="FillAndExpand"
-										VerticalOptions="FillAndExpand"
-										HeightRequest="1000">
+			<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}">
 				<StackLayout Spacing="8">
 					<Label Text="{Binding Counter}"/>
 					<Button Text="Click me!"

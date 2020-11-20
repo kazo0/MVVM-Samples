@@ -9,7 +9,7 @@ dev_langs:
 
 # RelayCommand
 
-The `RelayCommand` and `RelayCommand<T>` are `ICommand` implementations that can expose a method or delegate to the view. These types act as a way to bind commands between the viewmodel and UI elements.
+The [RelayCommand](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand) and [RelayCommand of T](https://docs.microsoft.com/dotnet/api/microsoft.toolkit.mvvm.input.RelayCommand-1) are `ICommand` implementations that can expose a method or delegate to the view. These types act as a way to bind commands between the viewmodel and UI elements.
 
 ## How they work
 

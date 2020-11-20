@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
              x:Class="MvvmSampleXF.App">
     <Application.Resources>
 		<Color x:Key="PrimaryColor">#1976D2</Color>
-
+		<Color x:Key="FrameBackgroundColorDark">#1AFFFFFF</Color>
 		<Color x:Key="BackgroundColorDark">#121212</Color>
 		<Color x:Key="BackgroundColorLight">#EFF2F5</Color>
 
@@ -60,5 +61,14 @@
 			<Setter Property="TextColor"
 					Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
 		</Style>
+
+		<Style TargetType="Frame"
+			   ApplyToDerivedTypes="True">
+			<Setter Property="BackgroundColor"
+					Value="{AppThemeBinding Dark={StaticResource FrameBackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+		</Style>
+
+		<xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+		<xct:IsNotNullOrEmptyConverter  x:Key="IsNotNullOrEmptyConverter" />
 	</Application.Resources>
 </Application>

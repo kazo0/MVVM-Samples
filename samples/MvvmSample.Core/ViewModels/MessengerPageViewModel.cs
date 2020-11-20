@@ -3,13 +3,24 @@
 // See the LICENSE file in the project root for more information.
 
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Microsoft.Toolkit.Mvvm.Messaging.Messages;
+using System.Windows.Input;
 
 namespace MvvmSampleUwp.ViewModels
 {
     public class MessengerPageViewModel : SamplePageViewModel
     {
+		public MessengerPageViewModel()
+		{
+            RequestCurrentUsernameCommand = new RelayCommand(RequestCurrentUsername);
+            ResetCurrentUsernameCommand = new RelayCommand(ResetCurrentUsername);
+        }
+
+        public ICommand RequestCurrentUsernameCommand { get; }
+        public ICommand ResetCurrentUsernameCommand { get; }
+
         public UserSenderViewModel SenderViewModel { get; } = new UserSenderViewModel();
 
         public UserReceiverViewModel ReceiverViewModel { get; } = new UserReceiverViewModel();
@@ -17,6 +28,13 @@ namespace MvvmSampleUwp.ViewModels
         // Simple viewmodel for a module sending a username message
         public class UserSenderViewModel : ObservableRecipient
         {
+            public UserSenderViewModel()
+            {
+                SendUserMessageCommand = new RelayCommand(SendUserMessage);
+            }
+
+            public ICommand SendUserMessageCommand { get; }
+
             private string username = "Bob";
 
             public string Username
