@@ -4,7 +4,8 @@
 			 x:Class="MvvmSampleXF.Views.SettingUpTheViewModelsPage"
 			 xmlns:vm="clr-namespace:MvvmSampleUwp.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-			 x:DataType="vm:SamplePageViewModel">
+			 x:DataType="vm:SamplePageViewModel"
+			 Title="ViewModel Setup">
 	<ContentPage.BindingContext>
 		<vm:SamplePageViewModel x:Name="ViewModel" />
 	</ContentPage.BindingContext>

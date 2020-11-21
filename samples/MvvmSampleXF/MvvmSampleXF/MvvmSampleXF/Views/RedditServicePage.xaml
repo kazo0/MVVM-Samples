@@ -4,7 +4,8 @@
 			 xmlns:vm="clr-namespace:MvvmSampleUwp.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 x:DataType="vm:SamplePageViewModel"
-			 x:Class="MvvmSampleXF.Views.RedditServicePage">
+			 x:Class="MvvmSampleXF.Views.RedditServicePage"
+			 Title="Creating a Service">
 	<ContentPage.BindingContext>
 		<vm:SamplePageViewModel x:Name="ViewModel" />
 	</ContentPage.BindingContext>

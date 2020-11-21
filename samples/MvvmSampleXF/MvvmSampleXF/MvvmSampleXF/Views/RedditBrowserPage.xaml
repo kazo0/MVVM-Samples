@@ -4,7 +4,8 @@
 			 xmlns:controls="clr-namespace:MvvmSampleXF.Controls"
 			 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
 			 xmlns:widgets="clr-namespace:MvvmSampleXF.Views.Widgets"
-			 x:Class="MvvmSampleXF.Views.RedditBrowserPage">
+			 x:Class="MvvmSampleXF.Views.RedditBrowserPage"
+			 Title="The Final Result!">
 	<Grid Padding="16">
 		<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}">
 			<xct:TabView x:Name="RedditTabView" 
