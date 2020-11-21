@@ -116,7 +116,18 @@
 			<Setter Property="BackgroundColor"
 					Value="{AppThemeBinding Dark={StaticResource FrameBackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
 		</Style>
-		
+
+		<Style TargetType="xct:TabViewItem">
+			<Setter Property="TextColor"
+					Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
+		</Style>
+
+
+		<Style TargetType="Picker">
+			<Setter Property="TextColor"
+					Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
+		</Style>
+
 		<OnPlatform x:Key="FaSolidFont"
 					x:TypeArguments="x:String">
 			<On Platform="iOS"
@@ -200,7 +211,10 @@
 		<FontImage x:Key="CheckerIcon"
 				   FontFamily="{StaticResource FaSolidFont}"
 				   Glyph="&#xf11e;" />
-
+		
+		<FontImage x:Key="RefreshIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf021;" />
 		<xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
 		<xct:IsNotNullOrEmptyConverter  x:Key="IsNotNullOrEmptyConverter" />
 	</Application.Resources>

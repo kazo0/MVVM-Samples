@@ -18,20 +18,21 @@
 
 		<!--Header with topic selector and refresh button-->
 		<Frame Padding="10,0,10,0">
-		<Grid ColumnDefinitions="*, Auto">
-			<Picker ItemsSource="{Binding Subreddits, Mode=OneWay}"
-					SelectedItem="{Binding SelectedSubreddit, Mode=TwoWay}"
-					VerticalOptions="Center"
-					HorizontalOptions="StartAndExpand">
-				<Picker.Behaviors>
-					<xct:EventToCommandBehavior EventName="SelectedIndexChanged"
-												Command="{Binding LoadPostsCommand}" />
-				</Picker.Behaviors>
-			</Picker>
-			<Button Text="Refresh"
-					Grid.Column="1"
-					Command="{Binding LoadPostsCommand}" />
-		</Grid>
+			<Grid ColumnDefinitions="*, Auto">
+				<Picker ItemsSource="{Binding Subreddits, Mode=OneWay}"
+						SelectedItem="{Binding SelectedSubreddit, Mode=TwoWay}"
+						VerticalOptions="Center"
+						HorizontalOptions="FillAndExpand"
+						Title="Subreddit">
+					<Picker.Behaviors>
+						<xct:EventToCommandBehavior EventName="SelectedIndexChanged"
+													Command="{Binding LoadPostsCommand}" />
+					</Picker.Behaviors>
+				</Picker>
+				<Button Text="Refresh"
+						Grid.Column="1"
+						Command="{Binding LoadPostsCommand}" />
+			</Grid>
 		</Frame>
 
 		<!--Items list-->
