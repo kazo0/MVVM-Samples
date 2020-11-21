@@ -4,7 +4,7 @@
              x:Class="MvvmSampleXF.Controls.FlyoutHeader">
 	<Grid BackgroundColor="{AppThemeBinding Dark=Black, Light=White}">
 		<Image Aspect="AspectFill"
-			   Source="headerBg.jpg"
+			   Source="headerBg"
 			   Opacity="0.6" />
 	</Grid>
 </ContentView>

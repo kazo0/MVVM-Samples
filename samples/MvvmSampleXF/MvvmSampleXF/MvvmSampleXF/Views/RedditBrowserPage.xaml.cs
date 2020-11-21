@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views;
@@ -35,7 +36,9 @@ namespace MvvmSampleXF.Views
 
 		private void SubredditWidget_PostSelected(object sender, EventArgs e)
 		{
-			
+			//Ugly workaround for https://github.com/xamarin/XamarinCommunityToolkit/issues/595
+			MethodInfo dynMethod = RedditTabView.GetType().GetMethod("UpdateSelectedIndex", BindingFlags.NonPublic | BindingFlags.Instance);
+			dynMethod?.Invoke(RedditTabView, new object[] { 1, false });
 		}
 
 	}

@@ -9,7 +9,8 @@
 		<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}">
 			<xct:TabView x:Name="RedditTabView" 
 						 TabIndicatorPlacement="Bottom"
-						 TabIndicatorColor="Orange">
+						 TabIndicatorColor="Orange"
+						 IsSwipeEnabled="False">
 				<xct:TabViewItem Text="Subreddit">
 					<widgets:SubredditWidget x:Name="SubredditWidget" />
 				</xct:TabViewItem>
