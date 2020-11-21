@@ -21,7 +21,7 @@
 			<md:MarkdownView Markdown="{Binding Path=Texts[Working with asynchronous commands], Mode=OneWay}" />
 
 			<controls:InteractiveSample ControlTemplate="{StaticResource InteractiveSampleTemplate}"
-										HeightRequest="250">
+										HeightRequest="400">
 				<StackLayout Spacing="8">
 					<Label Text="{Binding DownloadTextCommand.ExecutionTask.Status, TargetNullValue='Task status: ', FallbackValue='Task status: ', StringFormat='Task status: {0}' }" />
 					<Label Text="{Binding DownloadTextCommand.ExecutionTask, Converter={StaticResource TaskResultConverter}, StringFormat='Result: {0}' }" />

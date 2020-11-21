@@ -26,6 +26,7 @@ namespace MvvmSampleXF
 				services.AddSingleton<ISettingsService, SettingsService>();
 				services.AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"));
 			});
+
 			MainPage = new AppShell();
 		}
 
