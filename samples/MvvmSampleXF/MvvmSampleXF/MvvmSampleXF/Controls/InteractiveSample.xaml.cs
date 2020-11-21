@@ -30,15 +30,5 @@ namespace MvvmSampleXF.Controls
 		{
 			InitializeComponent();
         }
-
-		protected override void OnBindingContextChanged()
-		{
-			base.OnBindingContextChanged();
-
-            //if (BindingContext != null)
-            //{
-            //    Content.BindingContext = BindingContext;
-            //}
-		}
 	}
 }

@@ -37,8 +37,8 @@
   <ItemGroup>
     <PackageReference Include="Xam.Forms.MarkdownView" Version="0.6.1-pre" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0-pre5" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1709-pre4" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre4" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
 
   <ItemGroup>

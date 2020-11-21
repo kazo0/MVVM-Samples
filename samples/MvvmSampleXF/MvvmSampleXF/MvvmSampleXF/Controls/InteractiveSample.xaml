@@ -5,8 +5,7 @@
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
 			 x:Class="MvvmSampleXF.Controls.InteractiveSample">
 	<ContentView.Resources>
-		<ControlTemplate x:Key="InteractiveSampleTemplate"
-						 x:Name="ControlTemplate">
+		<ControlTemplate x:Key="InteractiveSampleTemplate">
 			<Frame CornerRadius="4"
 				   BackgroundColor="Transparent"
 				   BorderColor="{StaticResource PrimaryColor}">
