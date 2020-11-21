@@ -16,5 +16,12 @@ namespace MvvmSampleXF.Views
 		{
 			InitializeComponent();
 		}
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+
+			ViewModel.LoadDocsCommand.Execute("PuttingThingsTogether");
+		}
 	}
 }

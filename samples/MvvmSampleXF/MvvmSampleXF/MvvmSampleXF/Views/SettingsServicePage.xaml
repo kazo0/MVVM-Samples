@@ -4,8 +4,7 @@
 			 x:Class="MvvmSampleXF.Views.SettingsServicePage"
 			 xmlns:vm="clr-namespace:MvvmSampleUwp.ViewModels;assembly=MvvmSample.Core"
 			 xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
-			 x:DataType="vm:SamplePageViewModel"
-			 Background="White">
+			 x:DataType="vm:SamplePageViewModel">
 	<ContentPage.BindingContext>
 		<vm:SamplePageViewModel x:Name="ViewModel" />
 	</ContentPage.BindingContext>

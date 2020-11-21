@@ -177,6 +177,30 @@
 				   FontFamily="{StaticResource FaSolidFont}"
 				   Glyph="&#xf0e2;" />
 
+		<FontImage x:Key="CubeIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf1b3;" />
+
+		<FontImage x:Key="ToolsIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf7d9;" />
+
+		<FontImage x:Key="WrenchIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf0ad;" />
+
+		<FontImage x:Key="GlobeIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf57d;" />
+
+		<FontImage x:Key="RulerIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf5ae;" />
+
+		<FontImage x:Key="CheckerIcon"
+				   FontFamily="{StaticResource FaSolidFont}"
+				   Glyph="&#xf11e;" />
+
 		<xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
 		<xct:IsNotNullOrEmptyConverter  x:Key="IsNotNullOrEmptyConverter" />
 	</Application.Resources>

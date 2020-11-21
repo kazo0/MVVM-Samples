@@ -26,12 +26,12 @@
 				</StackLayout>
 				<controls:InteractiveSample.XamlCode>
 ```xml
-&lt;StackPanel Spacing="8">
-    &lt;TextBox
-        PlaceholderText="Type here to update the text below"
-        Text="{x:Bind ViewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-    &lt;TextBlock Text="{x:Bind ViewModel.Name, Mode=OneWay}"/>
-&lt;/StackPanel>
+&lt;StackLayout Spacing="8">
+    &lt;!--Simple property sample-->
+    &lt;Entry Placeholder="Type here to update the text below"
+            Text="{Binding Name, Mode=TwoWay}" />
+    &lt;Label Text="{Binding Name, Mode=OneWay}" />
+&lt;/StackLayout>
 
 ```
 				</controls:InteractiveSample.XamlCode>

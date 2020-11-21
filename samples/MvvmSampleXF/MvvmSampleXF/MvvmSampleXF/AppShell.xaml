@@ -41,6 +41,27 @@
 
 	<ShellContent Title="Inversion of Control"
 				  Icon="{StaticResource UndoIcon}"
-				  ContentTemplate="{DataTemplate views:MessengerRequestPage}" />
+				  ContentTemplate="{DataTemplate views:IoCPage}" />
+	
+	<ShellContent Title="ViewModel Setup"
+				  Icon="{StaticResource CubeIcon}"
+				  ContentTemplate="{DataTemplate views:SettingUpTheViewModelsPage}" />
 
+	<FlyoutItem Title="Creating a Service"
+				Icon="{StaticResource ToolsIcon}">
+		<ShellContent Title="Settings Service"
+					  Icon="{StaticResource WrenchIcon}"
+					  ContentTemplate="{DataTemplate views:SettingsServicePage}" />
+		<ShellContent Title="Reddit Service"
+					  Icon="{StaticResource GlobeIcon}"
+					  ContentTemplate="{DataTemplate views:RedditServicePage}" />
+	</FlyoutItem>
+
+	<ShellContent Title="Building the UI"
+				  Icon="{StaticResource RulerIcon}"
+				  ContentTemplate="{DataTemplate views:BuildingTheUIPage}" />
+
+	<ShellContent Title="The Final Result!"
+				  Icon="{StaticResource CheckerIcon}"
+				  ContentTemplate="{DataTemplate views:RedditBrowserPage}" />
 </Shell>

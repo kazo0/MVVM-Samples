@@ -20,157 +20,94 @@
 			<controls:InteractiveSample.XamlCode>
 	
 			```xml
-&lt;!--Feed widget-->
-&lt;Grid
-    BorderThickness="1"
-    BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}">
-    &lt;Grid.RowDefinitions>
-        &lt;RowDefinition Height="60"/>
-        &lt;RowDefinition Height="8"/>
-        &lt;RowDefinition Height="*"/>
-    &lt;/Grid.RowDefinitions>
+&lt;!--Feed-->
+&lt;Grid RowDefinitions="60, 8, *">
 
     &lt;!--Header with topic selector and refresh button-->
-    &lt;Border
-        Padding="12"
-        Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
-        &lt;StackPanel Orientation="Horizontal" Spacing="16">
-            &lt;ComboBox
-                ItemsSource="{x:Bind ViewModel.Subreddits, Mode=OneWay}"
-                SelectedItem="{x:Bind ViewModel.SelectedSubreddit, Mode=TwoWay}"
-                SelectionChangedTrigger="Committed"
-                VerticalAlignment="Center"
-                MinWidth="240">
-                &lt;interactivity:Interaction.Behaviors>
-                    &lt;core:EventTriggerBehavior EventName="SelectionChanged">
-                        &lt;core:InvokeCommandAction Command="{x:Bind ViewModel.LoadPostsCommand}"/>
-                    &lt;/core:EventTriggerBehavior>
-                &lt;/interactivity:Interaction.Behaviors>
-            &lt;/ComboBox>
-            &lt;Button
-                Content="{extensions:SymbolIcon Symbol=Refresh}"
-                Command="{x:Bind ViewModel.LoadPostsCommand}"/>
-        &lt;/StackPanel>
-    &lt;/Border>
+    &lt;Frame Padding="10,0,10,0">
+    &lt;Grid ColumnDefinitions="*, Auto">
+        &lt;Picker ItemsSource="{Binding Subreddits, Mode=OneWay}"
+                SelectedItem="{Binding SelectedSubreddit, Mode=TwoWay}"
+                VerticalOptions="Center"
+                HorizontalOptions="StartAndExpand">
+            &lt;Picker.Behaviors>
+                &lt;xct:EventToCommandBehavior EventName="SelectedIndexChanged"
+                                            Command="{Binding LoadPostsCommand}" />
+            &lt;/Picker.Behaviors>
+        &lt;/Picker>
+        &lt;Button Text="Refresh"
+                Grid.Column="1"
+                Command="{Binding LoadPostsCommand}" />
+    &lt;/Grid>
+    &lt;/Frame>
 
     &lt;!--Items list-->
-    &lt;ListView
-        Grid.Row="1"
-        Grid.RowSpan="2"
-        ItemsSource="{x:Bind ViewModel.Posts}"
-        SelectedItem="{x:Bind ViewModel.SelectedPost, Mode=TwoWay}"
-        ScrollViewer.CanContentRenderOutsideBounds="True">
-        &lt;ListView.ItemContainerStyle>
-            &lt;Style TargetType="ListViewItem">
-                &lt;Setter Property="Background" Value="#10FFFFFF"/>
-                &lt;Setter Property="Margin" Value="0,2,0,2"/>
-                &lt;Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-            &lt;/Style>
-        &lt;/ListView.ItemContainerStyle>
-        &lt;ListView.ItemTemplate>
+    &lt;CollectionView Grid.Row="2"
+                    ItemsSource="{Binding Posts}"
+                    SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                    SelectionMode="Single"
+                    SelectionChanged="CollectionView_SelectionChanged"
+                    IsVisible="{Binding LoadPostsCommand.IsRunning, Mode=OneWay, Converter={StaticResource InvertedBoolConverter}}">
+        &lt;CollectionView.ItemTemplate>
             &lt;DataTemplate x:DataType="models:Post">
-                &lt;Grid
-                    ColumnSpacing="8"
-                    Padding="16">
-                    &lt;Grid.ColumnDefinitions>
-                        &lt;ColumnDefinition Width="*"/>
-                        &lt;ColumnDefinition Width="Auto"/>
-                    &lt;/Grid.ColumnDefinitions>
-                    &lt;TextBlock
-                        Text="{x:Bind Title}"
-                        FontSize="15"
-                        FontWeight="Normal"
-                        TextWrapping="WrapWholeWords"
-                        VerticalAlignment="Center"/>
-                    &lt;controls:ImageEx
-                        Grid.Column="1"
-                        Source="{x:Bind Thumbnail}"
-                        Stretch="Uniform"
-                        HorizontalAlignment="Right"
-                        Width="120"/>
-                &lt;/Grid>
+                &lt;Frame BorderColor="Black">
+                    &lt;Grid ColumnSpacing="8"
+                            Padding="16"
+                            ColumnDefinitions="*, Auto">
+                        &lt;Label Text="{Binding Title}"
+                                FontSize="15"
+                                LineBreakMode="WordWrap"
+                                VerticalOptions="Center" />
+                        &lt;Image Grid.Column="1"
+                                Source="{Binding Thumbnail}"
+                                Aspect="AspectFit"
+                                HorizontalOptions="End"
+                                WidthRequest="{Binding Thumbnail, Converter={StaticResource IsSelfPostToWidthRequestConverter}}" />
+                    &lt;/Grid>
+                &lt;/Frame>
             &lt;/DataTemplate>
-        &lt;/ListView.ItemTemplate>
-    &lt;/ListView>
+        &lt;/CollectionView.ItemTemplate>
+    &lt;/CollectionView>
 
     &lt;!--Loading bar-->
-    &lt;muxc:ProgressBar
-        Grid.Row="1"
-        Grid.RowSpan="2"
-        IsHitTestVisible="False"
-        VerticalAlignment="Top"
-        IsIndeterminate="True"
-        Visibility="{x:Bind ViewModel.LoadPostsCommand.IsRunning, Mode=OneWay}"/>
-
-    &lt;!--Header drop shadow-->
-    &lt;Rectangle Grid.Row="1" Height="8" IsHitTestVisible="False">
-        &lt;Rectangle.Fill>
-            &lt;LinearGradientBrush EndPoint="0,0" StartPoint="0,1">
-                &lt;GradientStop Color="#60000000" Offset="1"/>
-                &lt;GradientStop Offset="0"/>
-            &lt;/LinearGradientBrush>
-        &lt;/Rectangle.Fill>
-    &lt;/Rectangle>
+    &lt;ActivityIndicator Grid.Row="1"
+                        Grid.RowSpan="2"
+                        Margin="0, 10, 0, 0"
+                        VerticalOptions="Start"
+                        IsRunning="{Binding LoadPostsCommand.IsRunning, Mode=OneWay}"
+                        IsVisible="{Binding LoadPostsCommand.IsRunning, Mode=OneWay}" />
 &lt;/Grid>
 
-&lt;!--Post widget-->
-&lt;Grid
-    BorderThickness="1"
-    BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}">
-    &lt;Grid.RowDefinitions>
-        &lt;RowDefinition Height="Auto"/>
-        &lt;RowDefinition Height="*"/>
-    &lt;/Grid.RowDefinitions>
+&lt;!--Post-->
+&lt;Grid RowDefinitions="Auto, *">
 
     &lt;!--Self text-->
-    &lt;Border
-        Grid.Row="1"
-        extensions:UIElementExtensions.ClipToBounds="True">
-        &lt;ScrollViewer CanContentRenderOutsideBounds="True">
-            &lt;TextBlock
-                Text="{x:Bind ViewModel.Post.SelfText, Mode=OneWay}"
-                TextWrapping="WrapWholeWords"
-                Margin="16"/>
-        &lt;/ScrollViewer>
-    &lt;/Border>
+    &lt;Frame Grid.Row="1">
+        &lt;ScrollView>
+            &lt;Label Text="{Binding Post.SelfText, Mode=OneWay}"
+                    LineBreakMode="WordWrap"
+                    Margin="16" />
+        &lt;/ScrollView>
+    &lt;/Frame>
 
     &lt;!--Header-->
-    &lt;Grid
-        Grid.Row="0"
-        ColumnSpacing="8"
-        Padding="16"
-        Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
-        &lt;Grid.ColumnDefinitions>
-            &lt;ColumnDefinition Width="*"/>
-            &lt;ColumnDefinition Width="Auto"/>
-        &lt;/Grid.ColumnDefinitions>
-        &lt;TextBlock
-            Text="{x:Bind ViewModel.Post.Title, Mode=OneWay}"
-            FontSize="16"
-            FontWeight="SemiBold"
-            TextWrapping="WrapWholeWords"
-            VerticalAlignment="Center"/>
-        &lt;controls:ImageEx
-            Grid.Column="1"
-            Source="{x:Bind ViewModel.Post.Thumbnail, Mode=OneWay}"
-            Stretch="Uniform"
-            HorizontalAlignment="Right"
-            Width="160"/>
-    &lt;/Grid>
-
-    &lt;!--Header drop shadow-->
-    &lt;Rectangle
-        Grid.Row="1"
-        Height="8"
-        VerticalAlignment="Top"
-        IsHitTestVisible="False">
-        &lt;Rectangle.Fill>
-            &lt;LinearGradientBrush EndPoint="0,0" StartPoint="0,1">
-                &lt;GradientStop Color="#60000000" Offset="1"/>
-                &lt;GradientStop Offset="0"/>
-            &lt;/LinearGradientBrush>
-        &lt;/Rectangle.Fill>
-    &lt;/Rectangle>
+    &lt;Frame>
+        &lt;Grid Grid.Row="0"
+                ColumnSpacing="8"
+                Padding="16"
+                ColumnDefinitions="*, Auto">
+            &lt;Label Text="{Binding Post.Title, Mode=OneWay}"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    LineBreakMode="WordWrap"
+                    VerticalOptions="Center" />
+            &lt;Image Grid.Column="1"
+                    Source="{Binding Post.Thumbnail, Mode=OneWay}"
+                    Aspect="AspectFit"
+                    HorizontalOptions="End"
+                    WidthRequest="{Binding Post.Thumbnail, Converter={StaticResource IsSelfPostToWidthRequestConverter}}" />
+        &lt;/Grid>
+    &lt;/Frame>
 &lt;/Grid>
 ```
             </controls:InteractiveSample.XamlCode>

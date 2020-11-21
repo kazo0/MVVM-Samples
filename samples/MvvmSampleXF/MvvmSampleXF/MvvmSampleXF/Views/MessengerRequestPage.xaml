@@ -25,50 +25,48 @@
 				</StackLayout>
 				<controls:InteractiveSample.XamlCode>
 					```xml
-&lt;StackPanel Spacing="8">
-    &lt;TextBlock Text="{x:Bind ViewModel.Username, Mode=OneWay}"/>
-    &lt;Button
-        Content="Click to request the username!"
-        Click="{x:Bind ViewModel.RequestCurrentUsername}"/>
-    &lt;Button
-        Content="Click to reset the local username!"
-        Click="{x:Bind ViewModel.ResetCurrentUsername}"/>
-&lt;/StackPanel>
+&lt;StackLayout Spacing="8">
+
+    &lt;Label Text="{Binding Username, Mode=OneWay}" />
+    &lt;Button Text="Click to request the username!"
+            Command="{Binding RequestCurrentUsernameCommand}" />
+    &lt;Button Text="Click to reset the local username!"
+            Command="{Binding ResetCurrentUsernameCommand}" />
+&lt;/StackLayout>
 
 ```
 				</controls:InteractiveSample.XamlCode>
 				<controls:InteractiveSample.CSharpCode>
 					```csharp
-// Simple viewmodel for a module responding to a request username message.
-// Don't forget to set the IsActive property to true when this viewmodel is in use!
 public class UserSenderViewModel : ObservableRecipient
 {
-    public string Username { get; private set; } = "Bob";
+    public UserSenderViewModel()
+    {
+        SendUserMessageCommand = new RelayCommand(SendUserMessage);
+    }
+
+    public ICommand SendUserMessageCommand { get; }
+
+    private string username = "Bob";
+
+    public string Username
+    {
+        get => username;
+        private set => SetProperty(ref username, value);
+    }
 
     protected override void OnActivated()
     {
-        Messenger.Register&lt;CurrentUsernameRequestMessage>(this, m => m.Reply(Username));
+        Messenger.Register
+			&lt;CurrentUsernameRequestMessage>(this, m => m.Reply(Username));
     }
-}
 
-private string username;
+    public void SendUserMessage()
+    {
+        Username = Username == "Bob" ? "Alice" : "Bob";
 
-public string Username
-{
-    get => username;
-    private set => SetProperty(ref username, value);
-}
-
-// Sends a message to request the current username, and updates the property
-public void RequestCurrentUsername()
-{
-    Username = Messenger.Default.Send&lt;CurrentUsernameRequestMessage>();
-}
-
-// Resets the current username
-public void ResetCurrentUsername()
-{
-    Username = null;
+        Messenger.Send(new UsernameChangedMessage(Username));
+    }
 }
 
 // A sample request message to get the current username

@@ -33,24 +33,18 @@
 				</StackLayout>
 				<controls:InteractiveSample.XamlCode>
 					```xml
-&lt;Page.Resources>
-    &lt;converters:TaskResultConverter x:Key="TaskResultConverter"/>
-&lt;/Page.Resources>
-&lt;StackPanel Spacing="8">
-    &lt;TextBlock>
-        &lt;Run Text="Task status:"/>
-        &lt;Run Text="{x:Bind ViewModel.DownloadTextCommand.ExecutionTask.Status, Mode=OneWay}"/>
-        &lt;LineBreak/>
-        &lt;Run Text="Result:"/>
-        &lt;Run Text="{x:Bind ViewModel.DownloadTextCommand.ExecutionTask, Converter={StaticResource TaskResultConverter}, Mode=OneWay}"/>
-    &lt;/TextBlock>
-    &lt;Button
-        Content="Click me!"
-        Command="{x:Bind ViewModel.DownloadTextCommand}"/>
-    &lt;muxc:ProgressRing
-        HorizontalAlignment="Left"
-        IsActive="{x:Bind ViewModel.DownloadTextCommand.IsRunning, Mode=OneWay}"/>
-&lt;/StackPanel>
+&lt;ContentPage.Resources>
+	&lt;converters:TaskResultConverter x:Key="TaskResultConverter" />
+&lt;/ContentPage.Resources>
+&lt;StackLayout Spacing="8">
+    &lt;Label Text="{Binding DownloadTextCommand.ExecutionTask.Status, TargetNullValue='Task status: ', FallbackValue='Task status: ', StringFormat='Task status: {0}' }" />
+    &lt;Label Text="{Binding DownloadTextCommand.ExecutionTask, Converter={StaticResource TaskResultConverter}, StringFormat='Result: {0}' }" />
+    &lt;Button Text="Click me!"
+            Command="{Binding DownloadTextCommand}" />
+    &lt;ActivityIndicator HorizontalOptions="Center"
+                    IsVisible="{Binding DownloadTextCommand.IsRunning, Mode=OneWay}"
+                    IsRunning="{Binding DownloadTextCommand.IsRunning, Mode=OneWay}" />
+&lt;/StackLayout>
 
 ```
 				</controls:InteractiveSample.XamlCode>

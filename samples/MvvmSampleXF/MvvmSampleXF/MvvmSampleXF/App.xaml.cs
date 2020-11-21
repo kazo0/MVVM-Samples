@@ -15,17 +15,23 @@ namespace MvvmSampleXF
 {
 	public partial class App : Application
 	{
+		private bool _initialized;
+
 		public App()
 		{
 			InitializeComponent();
 
 			// Register services
-			Ioc.Default.ConfigureServices(services =>
+			if (!_initialized)
 			{
-				services.AddSingleton<IFilesService, FileService>();
-				services.AddSingleton<ISettingsService, SettingsService>();
-				services.AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"));
-			});
+				_initialized = true;
+				Ioc.Default.ConfigureServices(services =>
+				{
+					services.AddSingleton<IFilesService, FileService>();
+					services.AddSingleton<ISettingsService, SettingsService>();
+					services.AddSingleton(RestService.For<IRedditService>("https://www.reddit.com/"));
+				});
+			}
 
 			MainPage = new AppShell();
 		}
