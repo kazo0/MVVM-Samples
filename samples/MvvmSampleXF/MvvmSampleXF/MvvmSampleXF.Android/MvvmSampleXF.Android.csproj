@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -99,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvvmSampleXF\MvvmSampleXF.csproj">
-      <Project>{D925494F-DFFB-4B3E-88D2-BB67E3A1E7D5}</Project>
+      <Project>{007025F4-A5C8-45A4-82BA-8CCF7E37E14A}</Project>
       <Name>MvvmSampleXF</Name>
     </ProjectReference>
   </ItemGroup>

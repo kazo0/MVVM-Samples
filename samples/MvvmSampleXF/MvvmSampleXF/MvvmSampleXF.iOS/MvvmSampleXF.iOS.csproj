@@ -85,7 +85,6 @@
     <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\StoreLogo..png">
       <Visible>false</Visible>
     </ImageAsset>
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -150,9 +149,12 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\MvvmSampleXF\MvvmSampleXF.csproj">
-      <Project>{D925494F-DFFB-4B3E-88D2-BB67E3A1E7D5}</Project>
+      <Project>{007025F4-A5C8-45A4-82BA-8CCF7E37E14A}</Project>
       <Name>MvvmSampleXF</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
