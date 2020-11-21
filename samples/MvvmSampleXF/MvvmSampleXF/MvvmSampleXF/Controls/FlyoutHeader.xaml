@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MvvmSampleXF.Controls.FlyoutHeader">
-	<Grid BackgroundColor="Black">
+	<Grid BackgroundColor="{AppThemeBinding Dark=Black, Light=White}">
 		<Image Aspect="AspectFill"
 			   Source="headerBg.jpg"
 			   Opacity="0.6" />

@@ -14,22 +14,19 @@
 							 TabIndicatorPlacement="Bottom">
 					<xct:TabViewItem Text="INTERACTIVE SAMPLE"
 									 FontAttributes="Bold">
-						<ContentPresenter Background="#60222222"
-										  Padding="12"
+						<ContentPresenter Padding="12"
 										  Content="{TemplateBinding Content}"
 										  BindingContext="{TemplateBinding BindingContext}"/>
 					</xct:TabViewItem>
 					<xct:TabViewItem Text="See XAML">
 						<ScrollView>
 							<md:MarkdownView Padding="8"
-											 Background="#FF202020"
 											 Markdown="{TemplateBinding XamlCode}" />
 						</ScrollView>
 					</xct:TabViewItem>
 					<xct:TabViewItem Text="See C#">
 						<ScrollView>
 							<md:MarkdownView Padding="8"
-											 Background="#FF202020"
 											 Markdown="{TemplateBinding CSharpCode}" />
 						</ScrollView>
 					</xct:TabViewItem>
